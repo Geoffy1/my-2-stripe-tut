@@ -1,6 +1,29 @@
+"use client"
 import Head from 'next/head'
 import Image from 'next/image'
+import { useState } from 'react'
+import { checkout } from '../../checkout'
+
 //import styles from '../styles/Home.module.css'
+
+const BuyButton = () => {
+  const [Checkout, setCheckout] = useState(null)
+
+  const handleClick = () => {
+    checkout({
+      lineItems: [
+        {
+          price: "price_1OEXKGLdjyWGgw1sLmMsKNOV",
+          quantity: 1
+        }
+      ]
+    })
+  }
+
+  return (
+    <button onClick={handleClick}>BUY!</button>
+  )
+}
 
 export default function Home() {
   return (
@@ -18,18 +41,20 @@ export default function Home() {
           Buy and stream Dj song event
         </h1>
         <div className="z-10 max-w-5xl w-full items-center justify-between font-mono text-sm lg:flex">
-          <a href="https://nextjs.org/docs">
-            <Image src="/images/client1.jpg" alt="NFT" width={400} height={200} objectFit='contain' />
+          <div>
+            <Image src="/images/client1.jpg" alt="NFT" width={400} height={200} />
             <p>
               Get started by editing&nbsp;
             </p>
-          </a>
-          <a href="https://nextjs.org/docs">
-            <Image src="/images/client4.jpg" alt="NFT" width={400} height={200} objectFit='contain' />
+            <BuyButton />
+          </div>
+          <div>
+            <Image src="/images/client4.jpg" alt="NFT" width={400} height={200} />
             <p>
               Get started by editing&nbsp;
             </p>
-          </a>
+
+          </div>
         </div>
       </main>
     </div>
